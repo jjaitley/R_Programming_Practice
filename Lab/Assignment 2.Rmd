@@ -1,0 +1,174 @@
+---
+title: "Assignment 2"
+author: "Jatin Jaitley"
+date: "November 13, 2018"
+output: html_document
+---
+###Question 1 Part 1
+```{r}
+Lawyers = read.csv("Lawyers.csv", header = TRUE)
+LitPract <- subset(Lawyers, Practice=='Litigation')
+lit<-nrow(LitPract)
+total<-nrow(Lawyers)
+proportion<-lit/total
+print("Proportion of the lawyers who practice litigation")
+print(format(round(proportion, 2), nsmall = 2))
+```
+###Question 1 Part 2
+```{r}
+pract_corp <- subset(Lawyers,  Practice=='Corporate')
+bo_corp <- subset(pract_corp, Office=='Boston')
+prov_corp<-subset(pract_corp, Office=='Providence')
+Total_Practice_Corp<-nrow(pract_corp)
+No_rows_Boston_corp<-nrow(bo_corp)
+No_rows_Providence_corp<-nrow(prov_corp)
+Proportion_Boston<-No_rows_Boston_corp/Total_Practice_Corp
+Proportion_Providence<-No_rows_Providence_corp/Total_Practice_Corp
+if (Proportion_Boston > Proportion_Providence) {
+  print('Proportion of lawyers in Boston office that practice corporate law is high which =',Proportion_Boston)
+}else
+  print('Proportion of lawyers in Providence office that practice corporate law is high which =',Proportion_Providence)
+```
+###Question 1 Part 3
+```{r}
+Avg_Age<-aggregate(Lawyers$Age, list(Lawyers$Practice, Lawyers$Seniority), mean)
+colnames(Avg_Age) <- c('Practice', 'Seniority', 'Average_Age')
+print(Avg_Age)
+```
+###Question 1 Part 4
+```{r}
+Off_Age<-Lawyers[,c("Office","Age")]
+YMA_Office<-tapply(Off_Age$Age, Off_Age$Office, median)
+YMA_Office
+cat('Youngest Meadian Age Office is Harvard & Median Age =',YMA_Office[2])
+```
+###Question 2 Part 1
+```{r}
+Rosenbrock_banana <- function(xx) # Function Name
+{
+total=0 #Need to get running total so assigned initial total value to 0 
+#running loop for 1 to n-1 values of vector
+for(i in 1:(length(xx)-1)){
+  #Doing the running total of all values in vector which we have passed
+  total <- total+((100*(xx[i+1]-(xx[i])^2)^2)+(1-xx[i])^2) 
+  } 
+  return(total) #Returning the Total
+}
+Rosenbrock_banana(c(.2, .5)) #Function Calling
+Rosenbrock_banana(c(.2, .5, .1, .6)) #Function Calling
+```
+###Question 2 Part 2
+```{r}
+recur <- function(xx,i,total)
+{
+  if(i == 4){
+      return(total)#Once it calculates all 4 values passed it return the total
+  }  #Doing the running total of all values in vector which we have passed
+     total<-total + ((100*(xx[i+1]-(xx[i])^2)^2)+(1-xx[i])^2)
+     i<-i+1 #Incrementing i to get to the next values of vector to get the running sum 
+     recur(xx,i,total) #Recursive function 
+}
+recur(c(.2, .5, .1, .6),1,0) #Function Calling with vector values, initial i & initial total value
+```
+###Question 2 Part 3
+```{r}
+start.time <- Sys.time() #Calculating the start time
+for (i in 1:100){ #Running the Rosenbrock_banana function 100 times
+  Rosenbrock_banana(c(0.2,0.5,0.1,0.6))
+}
+end.time <- Sys.time()  #Calculating the end time
+time.taken <- end.time - start.time #Calculating the time taken
+time.taken
+
+#########
+
+start.time <- Sys.time() #Calculating the start time
+for (i in 1:100){ #Running the recur function 100 times
+  recur(c(0.2,0.5,0.1,0.6),1,0)
+}
+end.time <- Sys.time()  #Calculating the end time
+time.taken <- end.time - start.time #Calculating the time taken
+time.taken
+```
+###Question 3 Part 1
+```{r}
+DublinAirport = read.csv("2018_09_Dublin_Airport.csv", header = TRUE)
+colnames(DublinAirport) <- c('date','rain','maxtp','mintp')
+class(DublinAirport)
+#summary(DublinAirport)
+class(DublinAirport)<-'WeatherData'
+```
+###Question 3 Part 2
+```{r}
+summary.WeatherData <- function(dt) {
+rain.mean<-mean(dt$rain)
+rain.sd<-sd(dt$rain)
+rain.max<-max(dt$rain)
+rain.min<-min(dt$rain)
+cat("\n\nMean Rain: ",rain.mean)
+cat("\nSD Rain: ",rain.sd)
+cat("\nMax Rain: ",rain.max)
+cat("\nMin Rain: ",rain.min)
+
+maxtmp.mean<-mean(dt$maxtp)
+maxtmp.sd<-sd(dt$maxtp)
+maxtmp.max<-max(dt$maxtp)
+maxtmp.min<-min(dt$maxtp)
+cat("\n\nMean MaxTmp: ",maxtmp.mean)
+cat("\nSD MaxTmp: ",maxtmp.sd)
+cat("\nMax MaxTmp: ",maxtmp.max)
+cat("\nMin MaxTmp: ",maxtmp.min)
+
+mintmp.mean<-mean(dt$mintp)
+mintmp.sd<-sd(dt$mintp)
+mintmp.max<-max(dt$mintp)
+mintmp.min<-min(dt$mintp)
+cat("\n\nMean MinTmp: ",mintmp.mean)
+cat("\nSD MinTmp: ",mintmp.sd)
+cat("\nMax MinTmp: ",mintmp.max)
+cat("\nMin MinTmp: ",mintmp.min)
+}
+summary(DublinAirport)
+```
+###Question 3 Part 3
+```{r}
+CorkAirport = read.csv("2018_09_Cork_Airport.csv", header = TRUE)
+colnames(CorkAirport) <- c('date','rain','maxtp','mintp')
+class(CorkAirport)
+class(CorkAirport)<-'WeatherData'
+cat('Based on the data for different cities we can that we have different values for Mean,SD,Maxtp & Mintp which is shown below')
+summary(CorkAirport)
+summary(DublinAirport)
+```
+```{r}
+plot.WeatherData<-function(dtf,maxi_color1="red",mini_color2="blue",bar_high="red",is_pt_req=TRUE){
+  #print(dtf)
+par(mfrow = c(2,1))
+plot(dtf$maxtp,type='o',pch=16,ylim=c(0,25),col = maxi_color1,xlab = "Dates(Sep-2018)",ylab =" Air Temperatures(C)",main='Daily Temperature & Precipitation Graph') # add the red line
+lines(dtf$mintp, col = mini_color2,type='o',pch=16,las = 1,panel.first =c(abline(v = 1:30, lty = 2, col = 'grey')))
+if(is_pt_req==TRUE){
+   max_date<-dtf$date[which.max(dtf$maxtp)]
+   min_date<-dtf$date[which.min(dtf$mintp)]
+   text(max_date,max(dtf$maxtp),label=max(dtf$maxtp))
+   text(min_date,min(dtf$mintp),label=max(dtf$mintp))
+}
+# Add in the legend
+legend('topright', legend = c('MaxTmp', 'MinTmp'), lty=c(1,1), cex=.5, 
+col = c('red', 'blue'))
+maxfac <- 1+(dtf$rai==max(dtf$rain))
+barplot(dtf$rain,ylim=c(0,25),las = 1,xlab = 'Dates(Sep-2018)',col=c("blue",bar_high)[maxfac],  ylab = "PPT Amt (mm)")
+axis(1, at = seq(1:30))
+}
+plot.WeatherData(DublinAirport,maxi_color1 = "red",mini_color2="blue",bar_high = "red")
+#plot(CorkAirport,'red','blue','red')
+```
+```{r}
+par(mfrow = c(2,1))
+plot(DublinAirport$maxtp,type='o',pch=16,ylim=c(0,25),las = 1,col = "red",xlab = "Dates(Sep-2018)",ylab =" Air Temperatures(C)",main='Daily Temperature & Precipitation Graph',panel.first =c(abline(v = 1:30, lty = 2, col = 'grey'))) # add the red line
+lines(DublinAirport$mintp, col = "Blue",type='o',pch=16)
+# Add in the legend
+legend('topright', legend = c('MaxTmp', 'MinTmp'), lty=c(1,1), cex=.5, 
+col = c('red', 'blue'))
+maxfac <- 1+(DublinAirport$rai==max(DublinAirport$rain))
+barplot(names.arg=DublinAirport$date,DublinAirport$rain,ylim=c(0,25),las = 1,xlab = 'Dates(Sep-2018)',col=c("blue","red")[maxfac],  ylab = "PPT Amount (mm)")
+```

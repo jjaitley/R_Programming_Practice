@@ -1,0 +1,83 @@
+---
+title: "Assignment 1"
+author: "Jatin Jaitley"
+date: "October 9, 2018"
+output: html_document
+---
+
+##Manipulation Question 1
+```{r}
+stats<-read.csv("EurostatCrime2015.csv")
+colnames(stats)[1] <- "Country"
+```
+##Manipulation Question 2
+```{r}
+dim(stats)
+str(stats)
+```
+##Manipulation Question 3(i)
+```{r}
+stats$Sex.crime<-stats$Rape+stats$Sexual.assault+stats$Sexual.violence
+head(stats$Sex.crime)
+```
+##Manipulation Question 3(ii)
+```{r}
+drp<-stats
+drp$Rape<-NULL
+drp$Sexual.assault<- NULL
+drp$Sexual.violence<- NULL
+```
+##Manipulation Question 4
+```{r}
+myDf <- drp[is.na(drp$Assault) | is.na(drp$Intentional.homicide) | is.na(drp$Robbery)
+              |is.na(drp$Theft)| is.na(drp$Sex.crime), ]
+
+which(rowSums(is.na(drp))==ncol(drp))
+
+vec1 <- complete.cases(stats)
+rownames(stats)[!vec1]
+```
+##Manipulation Question 5
+```{r}
+drp<-drp[complete.cases(drp),]
+stats<-stats[complete.cases(stats),]
+```
+##Manipulation Question 6
+```{r}
+dim(drp)
+```
+##Analysis Question 1
+```{r}
+print("Most common crime in Ireland in 2015 is Theft")
+max_crime_IRL<-stats[stats$Country =="Ireland",2:8]
+crtype<-colnames(max_crime_IRL)[apply(max_crime_IRL,1,which.max)]
+print(crtype)
+```
+##Analysis Question 2
+```{r}
+ord<-colnames(max_crime_IRL)[order(max_crime_IRL)]
+print("Least common crimes in Ireland in 2015 are 
+      1)Intentional.homicide
+      2)Rape
+      3)Sexual.assault")
+ord[1:3]
+```
+##Analysis Question 3
+```{r}
+cat("Highest record of ofences is SWEDEN")
+stats$Total.crime<-stats$Assault+stats$Intentional.homicide+stats$Robbery+stats$Theft+stats$Sex.crime
+ranks<-order(stats$Total.crime, decreasing = TRUE)
+countryname<-stats[ranks,]
+countryname[1,1]
+```
+##Creativity
+```{r}
+stats<-stats[complete.cases(stats),]
+library(ggplot2)
+qplot(data=stats, x=Assault, y=Country,colour=Assault
+      ,size=I(3),shape=I(17),alpha=I(0.7),main ="Assault Vs Countries")
+cat("Another Graph")
+p<-ggplot(data=stats,aes(x=Country, y= Theft)) +
+  geom_bar(stat="identity",fill="steelblue")
+p + coord_flip()
+```

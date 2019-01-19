@@ -1,0 +1,72 @@
+Seniority,Gender,Office,Years,Age,Practice,School
+Partner,Male,Boston,31,64,Litigation,Harvard or Yale
+Partner,Male,Boston,32,62,Corporate,Harvard or Yale
+Partner,Male,Harvard,13,67,Litigation,Harvard or Yale
+Partner,Male,Boston,31,59,Corporate,Other
+Partner,Male,Harvard,31,59,Litigation,University of Connecticut
+Partner,Male,Harvard,29,55,Litigation,Harvard or Yale
+Partner,Male,Harvard,29,63,Corporate,Other
+Partner,Male,Boston,28,53,Litigation,Other
+Partner,Male,Boston,25,53,Corporate,Harvard or Yale
+Partner,Male,Boston,25,53,Corporate,Other
+Partner,Male,Boston,23,50,Litigation,Harvard or Yale
+Partner,Male,Boston,24,52,Corporate,University of Connecticut
+Partner,Male,Boston,22,57,Litigation,University of Connecticut
+Partner,Male,Harvard,1,56,Corporate,Harvard or Yale
+Partner,Male,Providence,21,48,Corporate,Other
+Partner,Male,Boston,20,46,Corporate,Harvard or Yale
+Partner,Male,Boston,23,50,Corporate,Harvard or Yale
+Partner,Male,Harvard,18,45,Litigation,University of Connecticut
+Partner,Male,Boston,19,46,Corporate,Harvard or Yale
+Partner,Male,Boston,19,49,Litigation,Harvard or Yale
+Partner,Male,Boston,17,43,Litigation,University of Connecticut
+Partner,Male,Boston,9,49,Litigation,Other
+Partner,Male,Boston,16,45,Litigation,University of Connecticut
+Partner,Male,Boston,15,44,Litigation,University of Connecticut
+Partner,Male,Harvard,15,43,Corporate,University of Connecticut
+Partner,Male,Boston,15,41,Litigation,Other
+Partner,Female,Boston,13,47,Litigation,Harvard or Yale
+Partner,Male,Harvard,11,38,Corporate,University of Connecticut
+Partner,Female,Boston,10,38,Corporate,Other
+Partner,Male,Harvard,7,39,Litigation,Other
+Partner,Male,Harvard,8,34,Litigation,University of Connecticut
+Partner,Male,Harvard,8,33,Litigation,Other
+Partner,Male,Harvard,8,37,Litigation,Other
+Partner,Female,Boston,8,36,Corporate,University of Connecticut
+Partner,Male,Harvard,8,33,Corporate,Other
+Partner,Male,Boston,5,43,Litigation,Other
+Associate,Male,Providence,5,44,Corporate,Other
+Associate,Female,Boston,7,53,Litigation,University of Connecticut
+Associate,Female,Boston,6,37,Litigation,Harvard or Yale
+Associate,Male,Boston,6,34,Litigation,Harvard or Yale
+Associate,Male,Boston,5,31,Litigation,University of Connecticut
+Associate,Male,Boston,4,31,Corporate,University of Connecticut
+Associate,Female,Boston,5,47,Litigation,University of Connecticut
+Associate,Female,Providence,5,53,Corporate,Harvard or Yale
+Associate,Male,Boston,3,38,Corporate,Other
+Associate,Female,Harvard,3,42,Corporate,University of Connecticut
+Associate,Male,Providence,3,38,Litigation,Other
+Associate,Female,Boston,1,35,Corporate,Other
+Associate,Male,Boston,4,36,Litigation,University of Connecticut
+Associate,Male,Harvard,3,31,Corporate,University of Connecticut
+Associate,Female,Harvard,4,29,Litigation,Other
+Associate,Male,Boston,4,29,Litigation,Other
+Associate,Male,Boston,10,38,Corporate,Other
+Associate,Male,Boston,3,29,Litigation,Other
+Associate,Male,Boston,3,34,Litigation,Other
+Associate,Male,Boston,3,38,Litigation,University of Connecticut
+Associate,Female,Boston,3,33,Litigation,University of Connecticut
+Associate,Male,Harvard,3,33,Litigation,Other
+Associate,Female,Harvard,2,30,Litigation,University of Connecticut
+Associate,Female,Boston,2,31,Corporate,University of Connecticut
+Associate,Female,Boston,2,34,Corporate,Other
+Associate,Male,Boston,2,32,Corporate,University of Connecticut
+Associate,Male,Harvard,2,29,Corporate,University of Connecticut
+Associate,Female,Boston,2,45,Corporate,University of Connecticut
+Associate,Male,Boston,2,28,Litigation,Other
+Associate,Male,Boston,1,43,Litigation,Other
+Associate,Female,Boston,1,35,Litigation,University of Connecticut
+Associate,Male,Boston,1,26,Litigation,Other
+Associate,Female,Boston,1,38,Litigation,Other
+Associate,Male,Boston,1,31,Corporate,University of Connecticut
+Associate,Female,Boston,1,26,Litigation,University of Connecticut

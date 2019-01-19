@@ -1,0 +1,5 @@
+print("Jatin")
+data(cars)
+attach(cars)
+print(mean(speed))
+print("done")

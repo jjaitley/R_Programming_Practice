@@ -1,0 +1,22 @@
+---
+title: "R Markdown Task"
+author: "Jatin Jaitley 18200075"
+date: "September 24, 2018"
+output: html_document
+---
+##Load the MASS package
+```{r}
+library(MASS)
+```
+##The shrimp dataset
+```{r}
+show(shrimp)
+```
+A numeric vector with 18 determinations by different laboratories of the amount (percentage of the declared total weight) of shrimp in shrimp cocktail.
+
+## Plot
+```{r shrimp}
+plot(shrimp)
+summary(shrimp)
+```
+

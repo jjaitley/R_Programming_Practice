@@ -1,0 +1,13 @@
+---
+  title: "Load"
+author: "Jatin Jaitley 18200075"
+date: "September 18, 2018"
+output: html_document
+---
+
+# Section 1
+
+```{r}
+mydata<-read.table(file="myfile.txt",row.names = 1)
+mydata
+```

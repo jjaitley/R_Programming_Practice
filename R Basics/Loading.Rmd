@@ -1,0 +1,15 @@
+---
+title: "R Markdown Loading Data"
+author: "Jatin Jaitley"
+date: "September 20, 2018"
+output: html_document
+---
+
+
+
+## R Markdown
+
+```{r}
+mydata<-read.table(file="myfile.txt",header = TRUE, sep = ",")
+mydata
+```
